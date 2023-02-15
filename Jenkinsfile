@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
     
     triggers {
         githubPush()
@@ -18,9 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir('C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml'){
-                    bat 'docker-compose up --build -d'
-                }
+                bat 'docker-compose -f C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml up --build -d'
             }
         }
     }
