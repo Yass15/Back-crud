@@ -6,9 +6,14 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Build') {
             steps {
-                sh 'echo "building"'
+                bat 'echo "building"'
             }
         }
     }
