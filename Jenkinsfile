@@ -1,9 +1,13 @@
 pipeline {
     agent {
         docker {
-            image 'node:14-alpine'
-            args '--user node'
+            image 'docker:20.10.7'
+            args '-u root'
         }
+    }
+
+    environment {
+        COMPOSE_PROJECT_NAME = 'my-project'
     }
     
     triggers {
@@ -19,6 +23,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'docker-compose -f C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml up --build -d'
+                waitUntilServicesReady
             }
         }
     }
