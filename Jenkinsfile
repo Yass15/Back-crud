@@ -5,10 +5,6 @@ pipeline {
             args '-u root'
         }
     }
-
-    environment {
-        COMPOSE_PROJECT_NAME = 'my-project'
-    }
     
     triggers {
         githubPush()
