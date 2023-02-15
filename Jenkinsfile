@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:14-alpine'
+            label 'my-custom-label'
+            args '--user node'
+        }
+    }
     
     triggers {
         githubPush()
@@ -13,7 +19,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'docker-compose -f C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml up'
+                bat 'docker-compose -f C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml up --build -d'
+                waitUntilServicesReady
             }
         }
     }
