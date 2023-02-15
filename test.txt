@@ -2,4 +2,4 @@ helloooooooppp,,,lll
 depends_on:
       - sql-server
 
-yes
+yass
