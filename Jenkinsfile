@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'node:14-alpine'
-            label 'my-custom-label'
             args '--user node'
         }
     }
