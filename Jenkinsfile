@@ -23,7 +23,6 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'docker-compose -f C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml up --build -d'
-                waitUntilServicesReady
             }
         }
     }
