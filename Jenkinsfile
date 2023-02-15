@@ -6,11 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Build') {
             steps {
                 sh 'echo "building"'
@@ -23,7 +18,7 @@ pipeline {
             sh 'echo "success"'
         }
         failure {
-            sh 'echo "Build failed. Not publishing."'
+            sh 'echo "Build failed"'
         }
     }
 }
