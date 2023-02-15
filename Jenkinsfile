@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'echo "building"'
+                bat 'docker-compose -f C:\Users\Yassi\OneDrive\Bureau\PFE-SPARK\docker-compose.yml up --build -d'
             }
         }
     }
