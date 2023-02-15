@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'docker:20.10.7'
-            args '-u root'
+            image 'docker:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     
@@ -18,8 +18,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                node{
-                    bat 'docker-compose -f C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml up --build -d'
+                dir('C:/Users/Yassi/OneDrive/Bureau/PFE-SPARK/docker-compose.yml'){
+                    bat 'docker-compose up --build -d'
                 }
             }
         }
